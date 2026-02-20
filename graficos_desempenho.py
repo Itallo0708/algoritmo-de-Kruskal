@@ -12,8 +12,8 @@ def gerar_grafico(tamanhos, tempos_kruskal, tempos_prim = None, nome_variavel = 
         plt.plot(tamanhos, tempos_prim, marker='s', color='red', linestyle='--', linewidth=2, label='Prim')
     
     if nome_variavel=="Arestas":
-        plt.title(f"Análise de Sensibilidade a {nome_variavel} com 100000 vertices")
-    if nome_variavel=="Vertices":
+        plt.title(f"Análise de Sensibilidade a {nome_variavel} com 10000 vertices")
+    if nome_variavel=="Vértices":
         plt.title(f"Análise de Sensibilida a {nome_variavel} com 50000 arestas")
     plt.xlabel(f"Número de {nome_variavel}")
     plt.ylabel(f"tempo de Execução (segundos)")

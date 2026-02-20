@@ -20,7 +20,7 @@ def executar_testes():
         tempos_rodada_prim = []
 
         # Rodar 5 vezes para ter uma precisão melhor
-        for _ in range(5):
+        for _ in range(15):
             g_kruskal = KruskalAGM(v_fixo)
             g_prim = PrimAGM(v_fixo)
 
