@@ -32,7 +32,7 @@ def executar_testes():
 
     for v in lista_numero_vertices:
         g = KruskalAGM(v)
-        arestas = gerar_grafos(v, arestas_fixas)
+        arestas = gerar_grafos(arestas_fixas, v)
 
         for u, v_adj, w in arestas:
             g.add_aresta(u, v_adj, w)
