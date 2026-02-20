@@ -43,7 +43,7 @@ def gerar_grafos(numero_arestas, numero_vertices):
 
         # Verifica se a aresta já existe
         if par not in arestas_existentes:
-            peso = random.randint(1, 100)
+            peso = random.randint(1, 100000)
             arestas.append([u, v, peso])
             arestas_existentes.add(par)
         
