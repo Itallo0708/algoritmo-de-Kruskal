@@ -21,3 +21,12 @@ gerar_grafico(
     tempos_prim = tempos_prim_arestas,
     nome_variavel = 'Arestas'
 )
+
+# Gerar gráfico vértices variando
+print("\nPlotando gráfico de sensibilidade a vértices")
+gerar_grafico(
+    tamanhos= lista_vertices,
+    tempos_kruskal = tempos_kruskal_vertices,
+    tempos_prim=tempos_prim_vertices,
+    nome_variavel = 'Vértices'
+)
