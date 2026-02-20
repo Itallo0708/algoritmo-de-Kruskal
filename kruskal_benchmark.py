@@ -39,6 +39,6 @@ def executar_testes():
 
         tempo, _ = g.kruskal()
         resultados_vertice.append(tempo)
-        print(f"Número de Vértices: {v}\n Arestas: {arestas_fixas}\n Tempo: {tempo:.6f}s")
+        print(f"Número de Vértices: {v}; Arestas: {arestas_fixas}; Tempo: {tempo:.6f}s")
 
     return lista_numero_arestas, resultados_arestas, lista_numero_vertices, resultados_vertice

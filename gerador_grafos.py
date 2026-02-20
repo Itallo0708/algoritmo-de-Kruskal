@@ -47,4 +47,4 @@ def gerar_grafos(numero_arestas, numero_vertices):
             arestas.append([u, v, peso])
             arestas_existentes.add(par)
         
-        return arestas
+    return arestas
