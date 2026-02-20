@@ -8,7 +8,7 @@ def executar_testes():
     print("Iniciando Teste a Arestas\n")
     
     v_fixo = 1000
-    lista_numero_arestas = [2000, 5000, 10000, 5000]
+    lista_numero_arestas = [2000, 5000, 10000, 50000]
     resultados_arestas = []
 
     for tamanho in lista_numero_arestas:
