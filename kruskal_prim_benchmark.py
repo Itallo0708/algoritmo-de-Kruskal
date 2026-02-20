@@ -36,7 +36,7 @@ def executar_testes():
             tempos_rodada_kruskal.append(tempo_kruskal)
 
             # Mede o tempo Prim
-            tempo_prim = g_prim.prim()
+            tempo_prim, _= g_prim.prim()
             tempos_rodada_prim.append(tempo_prim)
         
         # mediana kruskal
@@ -58,25 +58,44 @@ def executar_testes():
     print("\n Iniciando Teste de Sensibilidade a Vértices...")
     arestas_fixas = 50000
     lista_numero_vertices = [10000, 20000, 30000, 50000]
-    resultados_vertice = []
+
+    resultados_kruskal_vertice = []
+    resultados_prim_vertice = []
 
     for v in lista_numero_vertices:
-        tempos_rodada = []
+        tempos_rodada_kruskal = []
+        tempos_rodada_prim = []
 
         # roda 5 vezes para cada tamanho
         for _ in range(5):
-            g = KruskalAGM(v)
+            g_kruskal = KruskalAGM(v)
+            g_prim = PrimAGM(v)
+
             arestas = gerar_grafos(arestas_fixas, v)
 
+            # Fornece o mesmo grafo para ambos os algoritmos
             for u, v_adj, w in arestas:
-                g.add_aresta(u, v_adj, w)
+                g_kruskal.add_aresta(u, v_adj, w)
+                g_prim.add_aresta(u, v_adj, w)
 
-            tempo, _ = g.kruskal()
-            tempos_rodada.append(tempo)
+            # Mede o tempo kruskal
+            tempo_kruskal, _ = g_kruskal.kruskal()
+            tempos_rodada_kruskal.append(tempo_kruskal)
+
+            # Mede o tempo Prim
+            tempo_prim, _ = g_prim.prim()
+            tempos_rodada_prim.append(tempo_prim)
         
-        tempo_mediano = statistics.median(tempos_rodada)
-        tempo = tempo_mediano
-        resultados_vertice.append(tempo)
-        print(f"Número de Vértices: {v}; Arestas: {arestas_fixas}; Tempo: {tempo:.6f}s")
+        # Mediana kruskal
+        tempo_mediano_kruskal = statistics.median(tempos_rodada_kruskal)
+        tempo_kruskal = tempo_mediano_kruskal
+        resultados_kruskal_vertice.append(tempo_kruskal)
 
-    return lista_numero_arestas, resultados_arestas, lista_numero_vertices, resultados_vertice
+        # Mediana Prim
+        tempo_mediano_prim = statistics.median(tempos_rodada_prim)
+        tempo_prim = tempo_mediano_prim
+        resultados_prim_vertice.append(tempo_prim)
+
+        print(f"Número de Vértices: {v}; Arestas: {arestas_fixas}; Tempo Kruskal: {tempo_kruskal:.6f}s ; Tempo Prim: {tempo_prim:.6f}")
+
+    return lista_numero_arestas, resultados_kruskal_arestas, resultados_prim_arestas, lista_numero_vertices, resultados_kruskal_vertice, resultados_prim_vertice
