@@ -50,7 +50,7 @@ def executar_testes():
         resultados_prim_arestas.append(tempo_prim)
 
 
-        print(f"V: {v_fixo}; Arestas: {tamanho}; tempo Kruskal: {tempo_kruskal}; tempo Prim: {tempo_prim}")
+        print(f"V: {v_fixo}; Arestas: {tamanho}; tempo Kruskal: {tempo_kruskal:.6f}; tempo Prim: {tempo_prim:.6f}")
     
     # Teste com variação no número de vértice
     # Número fixo de arestas = 10000
