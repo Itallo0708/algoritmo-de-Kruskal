@@ -11,25 +11,46 @@ def executar_testes():
     
     v_fixo = 10000
     lista_numero_arestas = [10000, 20000, 30000, 50000]
-    resultados_arestas = []
+
+    resultados_kruskal_arestas = []
+    resultados_prim_arestas = []
 
     for tamanho in lista_numero_arestas:
-        tempos_rodada = []
+        tempos_rodada_kruskal = []
+        tempos_rodada_prim = []
 
         # Rodar 5 vezes para ter uma precisão melhor
         for _ in range(5):
-            g = KruskalAGM(v_fixo)
+            g_kruskal = KruskalAGM(v_fixo)
+            g_prim = PrimAGM(v_fixo)
+
             arestas = gerar_grafos(tamanho, v_fixo)
 
+            # Fornece os grafos aos algoritmos
             for u, v, w in arestas:
-                g.add_aresta(u, v, w)
+                g_kruskal.add_aresta(u, v, w)
+                g_prim.add_aresta(u, v, w)
+
+            # mede o tempo do kruskal
+            tempo_kruskal, _= g_kruskal.kruskal()
+            tempos_rodada_kruskal.append(tempo_kruskal)
+
+            # Mede o tempo Prim
+            tempo_prim = g_prim.prim()
+            tempos_rodada_prim.append(tempo_prim)
         
-            tempo, _= g.kruskal()
-            tempos_rodada.append(tempo)
-        tempo_mediano = statistics.median(tempos_rodada)
-        tempo = tempo_mediano
-        resultados_arestas.append(tempo) 
-        print(f"V: {v_fixo}; Arestas: {tamanho}; tempo: {tempo}")
+        # mediana kruskal
+        tempo_mediano_kruskal= statistics.median(tempos_rodada_kruskal)
+        tempo_kruskal = tempo_mediano_kruskal
+        resultados_kruskal_arestas.append(tempo_kruskal)
+
+        # mediana prim
+        tempo_mediano_prim = statistics.median(tempos_rodada_prim)
+        tempo_prim = tempo_mediano_prim
+        resultados_prim_arestas.append(tempo_prim)
+
+
+        print(f"V: {v_fixo}; Arestas: {tamanho}; tempo Kruskal: {tempo_kruskal}; tempo Prim: {tempo_prim}")
     
     # Teste com variação no número de vértice
     # Número fixo de arestas = 10000
