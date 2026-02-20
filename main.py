@@ -1,6 +1,6 @@
 from gerador_grafos import gerar_grafos
 from graficos_desempenho import gerar_grafico
-from kruskal_benchmark import executar_testes
+from kruskal_prim_benchmark import executar_testes
 from kruskal import KruskalAGM
 
 print("Testes de sensibilidade de Kruskal a arestas e vértices \n")
