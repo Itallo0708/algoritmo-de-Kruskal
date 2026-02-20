@@ -1,4 +1,5 @@
 # import das bibliotecas
+import statistics
 from gerador_grafos import gerar_grafos
 from kruskal import KruskalAGM
 
@@ -12,14 +13,21 @@ def executar_testes():
     resultados_arestas = []
 
     for tamanho in lista_numero_arestas:
-        g = KruskalAGM(v_fixo)
-        arestas = gerar_grafos(tamanho, v_fixo)
+        tempos_rodada = []
 
-        for u, v, w in arestas:
-            g.add_aresta(u, v, w)
+        # Rodar 5 vezes para ter uma precisão melhor
+        for _ in range(5):
+            g = KruskalAGM(v_fixo)
+            arestas = gerar_grafos(tamanho, v_fixo)
+
+            for u, v, w in arestas:
+                g.add_aresta(u, v, w)
         
-        tempo, _= g.kruskal()
-        resultados_arestas.append(tempo)
+            tempo, _= g.kruskal()
+            tempos_rodada.append(tempo)
+        tempo_mediano = statistics.median(tempos_rodada)
+        tempo = tempo_mediano
+        resultados_arestas.append(tempo) 
         print(f"V: {v_fixo}; Arestas: {tamanho}; tempo: {tempo}")
     
     # Teste com variação no número de vértice
@@ -31,13 +39,21 @@ def executar_testes():
     resultados_vertice = []
 
     for v in lista_numero_vertices:
-        g = KruskalAGM(v)
-        arestas = gerar_grafos(arestas_fixas, v)
+        tempos_rodada = []
 
-        for u, v_adj, w in arestas:
-            g.add_aresta(u, v_adj, w)
+        # roda 5 vezes para cada tamanho
+        for _ in range(5):
+            g = KruskalAGM(v)
+            arestas = gerar_grafos(arestas_fixas, v)
 
-        tempo, _ = g.kruskal()
+            for u, v_adj, w in arestas:
+                g.add_aresta(u, v_adj, w)
+
+            tempo, _ = g.kruskal()
+            tempos_rodada.append(tempo)
+        
+        tempo_mediano = statistics.median(tempos_rodada)
+        tempo = tempo_mediano
         resultados_vertice.append(tempo)
         print(f"Número de Vértices: {v}; Arestas: {arestas_fixas}; Tempo: {tempo:.6f}s")
 
