@@ -24,7 +24,7 @@ def gerar_grafos(numero_arestas, numero_vertices):
     for i in range(1, numero_vertices):
         u = random.randint(0, i - 1)
         v = i
-        peso = random.randint(1, 100)
+        peso = random.randint(1, 100000)
 
         arestas.append([u, v, peso])
         arestas_existentes.add((u, v))

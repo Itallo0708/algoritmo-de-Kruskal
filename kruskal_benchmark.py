@@ -8,8 +8,8 @@ def executar_testes():
     # Teste com variação de arestas
     print("Iniciando Teste a Arestas\n")
     
-    v_fixo = 1000
-    lista_numero_arestas = [2000, 5000, 10000, 50000]
+    v_fixo = 10000
+    lista_numero_arestas = [10000, 20000, 30000, 50000]
     resultados_arestas = []
 
     for tamanho in lista_numero_arestas:
@@ -34,8 +34,8 @@ def executar_testes():
     # Número fixo de arestas = 10000
 
     print("\n Iniciando Teste de Sensibilidade a Vértices...")
-    arestas_fixas = 10000
-    lista_numero_vertices = [500, 1000, 5000, 10000]
+    arestas_fixas = 50000
+    lista_numero_vertices = [10000, 20000, 30000, 50000]
     resultados_vertice = []
 
     for v in lista_numero_vertices:
