@@ -2,6 +2,7 @@
 import statistics
 from gerador_grafos import gerar_grafos
 from kruskal import KruskalAGM
+from prim import PrimAGM
 
 # Função para executar os testes com diferentes tamanhos de grafos
 def executar_testes():
